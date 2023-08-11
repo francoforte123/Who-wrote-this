@@ -1,0 +1,25 @@
+﻿@model List<Who_wrote_this.Models.Answer>
+
+@if (Model.Any())
+{
+    <ol>
+        @foreach (var answer in Model)
+        {
+            <li>
+                @answer.Description
+                @if (answer.IsAccepted)
+                {
+                    <span>(Accepted)</span>
+                }
+
+                <span>
+                    @Html.ActionLink("Details", "Details","Answer", new { id=answer.Id })
+                </span>
+            </li>
+        }
+    </ol>
+}
+else
+{
+    <p>No answers for this question yet.</p>
+}
